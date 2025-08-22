@@ -1,0 +1,427 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #1c1f3b;
+  color: #ffffff;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: none;
+}
+
+.App-link {
+  display: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: flex-start;
+  padding: 24px;
+  background-color: #1c1f3b;
+  min-height: 100vh;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  background-color: #212442;
+  border-radius: 8px;
+  min-width: 350px;
+  max-width: 350px;
+  padding: 16px;
+  height: calc(100vh - 100px);
+}
+
+.column h2 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #2b2f52;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column h2::after {
+  content: "1";
+  font-size: 14px;
+  color: #ffffff80;
+}
+
+/* Column header colors */
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: -16px -16px 16px -16px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.ready-to-start {
+  background: #579bfc;
+  color: #ffffff;
+}
+
+.in-progress {
+  background: #fdab3d;
+  color: #ffffff;
+}
+
+.waiting-review {
+  background: #a25ddc;
+  color: #ffffff;
+}
+
+.pending-deploy {
+  background: #784b38;
+  color: #ffffff;
+}
+
+.done {
+  background: #00c875;
+  color: #ffffff;
+}
+
+.stuck {
+  background: #e2445c;
+  color: #ffffff;
+}
+
+.blank {
+  background: #808080;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #2b2f52;
+  border-radius: 8px;
+  margin: 12px 0;
+  cursor: grab;
+  transition: all 0.2s ease;
+  border: 1px solid #383b58;
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card-content {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+/* Card header status colors */
+.card-status-ready {
+  background: #579bfc;
+  color: #ffffff;
+}
+
+.card-status-progress {
+  background: #fdab3d;
+  color: #ffffff;
+}
+
+.card-status-review {
+  background: #a25ddc;
+  color: #ffffff;
+}
+
+.card-status-deploy {
+  background: #784b38;
+  color: #ffffff;
+}
+
+.card-status-done {
+  background: #00c875;
+  color: #ffffff;
+}
+
+.card-status-stuck {
+  background: #e2445c;
+  color: #ffffff;
+}
+
+.card:hover {
+  background-color: #323760;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border-color: #579bfc;
+}
+
+.card-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  font-size: 13px;
+  color: #c5c7d0;
+}
+
+/* Add task button */
+.add-task {
+  color: #579bfc;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.add-task:hover {
+  background-color: rgba(87, 155, 252, 0.1);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.header-action-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.header-action-btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.add-task-wrapper {
+  margin-top: auto;
+  padding: 8px 0;
+}
+
+.add-task-button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: none;
+  color: #579bfc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.add-task-button:hover {
+  background-color: rgba(87, 155, 252, 0.1);
+}
+
+.add-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1f3b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2f52;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #323760;
+}
+
+/* Remove default styles */
+.App-header, .App-logo, .App-link {
+  display: none;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .card-actions {
+  opacity: 1;
+}
+
+.card-action-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.card-action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Styles */
+.MuiDialog-paper {
+  background-color: #2b2f52 !important;
+  color: white !important;
+}
+
+.MuiDialogTitle-root {
+  border-bottom: 1px solid #383b58;
+}
+
+.MuiDialogContent-root {
+  padding: 20px !important;
+}
+
+.MuiTextField-root {
+  margin-bottom: 16px !important;
+}
+
+.MuiInputLabel-root {
+  color: #c5c7d0 !important;
+}
+
+.MuiOutlinedInput-root {
+  color: white !important;
+  fieldset {
+    border-color: #383b58 !important;
+  }
+  &:hover fieldset {
+    border-color: #579bfc !important;
+  }
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+}
+
+/* Column Header Colors */
+.column-header.ready { background: #4caf50; color: white; }
+.column-header.progress { background: #2196f3; color: white; }
+.column-header.review { background: #ff9800; color: white; }
+.column-header.deploy { background: #9c27b0; color: white; }
+.column-header.done { background: #388e3c; color: white; }
+.column-header.stuck { background: #f44336; color: white; }
+.column-header.blank { background: #9e9e9e; color: white; }
+
+/* Card Header Colors */
+.card-header.card-status-ready { background: #4caf50; color: white; }
+.card-header.card-status-progress { background: #2196f3; color: white; }
+.card-header.card-status-review { background: #ff9800; color: white; }
+.card-header.card-status-deploy { background: #9c27b0; color: white; }
+.card-header.card-status-done { background: #388e3c; color: white; }
+.card-header.card-status-stuck { background: #f44336; color: white; }
+.card-header.card-status-blank { background: #9e9e9e; color: white; }
+
+/* Column Header Colors */
+.column-header.ready {
+  background-color: #4caf50; /* green */
+  color: white;
+}
+
+.column-header.progress {
+  background-color: #2196f3; /* blue */
+  color: white;
+}
+
+.column-header.review {
+  background-color: #ff9800; /* orange */
+  color: white;
+}
+
+.column-header.deploy {
+  background-color: #9c27b0; /* purple */
+  color: white;
+}
+
+.column-header.done {
+  background-color: #2e7d32; /* darker green */
+  color: white;
+}
+
+.column-header.stuck {
+  background-color: #f44336; /* red */
+  color: white;
+}
+
+.column-header.blank {
+  background-color: #9e9e9e; /* gray */
+  color: white;
+}
+
+/* Inline editable input for column titles */
+.column-header input {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  padding: 2px 4px;
+}
+
